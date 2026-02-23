@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobSignal — Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d14; --surface: #111520; --surface2: #161c2d;
+    --border: rgba(255,255,255,0.07); --accent: #4fffb0;
+    --accent2: #6c8eff; --accent3: #ff6b6b; --accent4: #ffd166;
+    --text: #e8eaf0; --muted: #6b7390;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; padding: 40px 20px; }
+  .container { max-width: 780px; margin: 0 auto; }
+
+  h1 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+  h1 span { color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 14px; font-family: 'DM Mono', monospace; margin-bottom: 40px; }
+
+  .steps { display: flex; flex-direction: column; gap: 20px; }
+
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .step:hover { border-color: rgba(79,255,176,0.3); }
+
+  .step-num {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(79,255,176,0.1);
+    border: 1px solid rgba(79,255,176,0.3);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-body { flex: 1; }
+  .step-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .step-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+
+  .code-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-top: 8px;
+  }
+
+  .tip {
+    background: rgba(255,209,102,0.07);
+    border: 1px solid rgba(255,209,102,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--accent4);
+    margin-top: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .link-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
+
+  .what-it-does {
+    background: var(--surface);
+    border: 1px solid rgba(79,255,176,0.2);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .what-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--accent); margin-bottom: 14px; }
+
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .feature-item { font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+  .feature-icon { font-size: 16px; flex-shrink: 0; }
+  .feature-text { color: var(--muted); }
+  .feature-text strong { color: var(--text); display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Job<span>Signal</span> Setup Guide</h1>
+  <div class="subtitle">Gmail → Google Sheets → Auto Dashboard · ~10 minutes to set up</div>
+
+  <div class="what-it-does">
+    <div class="what-title">🤖 What this agent does for you</div>
+    <div class="feature-grid">
+      <div class="feature-item"><div class="feature-icon">📧</div><div class="feature-text"><strong>Reads your Gmail</strong>Scans for application confirmations, rejections, interview invites</div></div>
+      <div class="feature-item"><div class="feature-icon">🧠</div><div class="feature-text"><strong>Classifies automatically</strong>Applied, Advancing, Interview, Rejected, Offer — no manual tagging</div></div>
+      <div class="feature-item"><div class="feature-icon">📊</div><div class="feature-text"><strong>Updates your dashboard</strong>Live stats: total, response rate, high priority actions</div></div>
+      <div class="feature-item"><div class="feature-icon">⏰</div><div class="feature-text"><strong>Runs every morning</strong>Auto-syncs at 8 AM daily — always up to date</div></div>
+      <div class="feature-item"><div class="feature-icon">💡</div><div class="feature-text"><strong>AI action suggestions</strong>Tells you what to do next for each application</div></div>
+      <div class="feature-item"><div class="feature-icon">🔒</div><div class="feature-text"><strong>100% private</strong>Data stays in YOUR Google account — nothing sent externally</div></div>
+    </div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Create a new Google Sheet</div>
+        <div class="step-desc">Open a new blank spreadsheet. Name it "JobSignal Tracker" so you can find it easily.</div>
+        <a class="link-btn" href="https://sheets.new" target="_blank">→ Open Google Sheets</a>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Open Apps Script editor</div>
+        <div class="step-desc">In your new sheet, click the menu bar:<br><br>
+        <strong>Extensions → Apps Script</strong><br><br>
+        A new tab will open with a code editor. This is where the agent lives.</div>
+        <div class="tip">💡 If you see existing code (like "function myFunction()"), delete all of it first.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Paste the agent code</div>
+        <div class="step-desc">Open the file <strong>JobTracker_AppsScript.js</strong> (downloaded with this guide). Select all the code (Ctrl+A / Cmd+A), copy it, and paste it into the Apps Script editor.</div>
+        <div class="code-block">Ctrl+A to select all → Ctrl+C to copy → paste into Apps Script editor</div>
+        <div class="tip">💡 Then click the Save icon (💾) or press Ctrl+S</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Run: Setup Sheets</div>
+        <div class="step-desc">In the Apps Script editor, click the function dropdown (top center) and select <strong>setupSheets</strong>. Then click the ▶ Run button.<br><br>
+        Google will ask for permissions — click <strong>Allow</strong> (it needs Gmail + Sheets access to work).</div>
+        <div class="tip">⚠️ You may see "Google hasn't verified this app" — click "Advanced" → "Go to JobSignal (unsafe)" — this is YOUR script in YOUR account, it's safe.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Run: Sync Gmail Now</div>
+        <div class="step-desc">Change the function dropdown to <strong>syncGmailJobs</strong> and click ▶ Run.<br><br>
+        The agent will scan up to 200 emails from the past year. This may take 30–60 seconds. A popup will confirm when done!</div>
+        <div class="code-block">⏱ Expected time: 30–90 seconds for first sync</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">Enable Daily Auto-Sync</div>
+        <div class="step-desc">Run the function <strong>createDailyTrigger</strong> once. After that, the agent will automatically scan your Gmail every morning at 8 AM and update your dashboard — no action needed from you.</div>
+        <div class="tip">💡 Or use the custom menu in your Sheet: "🤖 JobSignal Agent" (appears after first run)</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <div class="step-title">View your Dashboard!</div>
+        <div class="step-desc">Go back to your Google Sheet. You'll see 3 tabs:<br><br>
+        📊 <strong>Dashboard</strong> — your live KPIs (total, response rate, high priority actions)<br>
+        📋 <strong>Applications</strong> — every email classified with AI-suggested action<br>
+        🔍 <strong>Agent Log</strong> — full history of every sync the agent ran</div>
+        <div class="tip">💡 To add an application manually, use the "🤖 JobSignal Agent" menu → Add Entry Manually</div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <div style="text-align:center; color:var(--muted); font-size:12px; font-family:'DM Mono',monospace; padding-bottom:40px;">
+    JobSignal · Built by Priyanka K. · Personal Portfolio Project 2025<br>
+    <span style="color:var(--accent)">Stack: Google Apps Script · Gmail API · Google Sheets</span>
+  </div>
+
+</div>
+</body>
+</html>
